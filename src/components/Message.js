@@ -8,7 +8,7 @@ const Message = ({
   photoURL = '' ,
  }) => {
   return (
-  <div>
+  <div className='message'>
     {photoURL ? (
       <img src={photoURL} alt='Avatar' width={45} height={45} />
     ) : null}
