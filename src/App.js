@@ -1,32 +1,85 @@
-import { useState } from "react"
+import { useState, Fragment, useEffect } from "react"
 import "./App.css"
-import Formulaire from "./components/Formulaire"
-import Message from "./components/Message"
+//import Formulaire from "./components/Formulaire"
+import Button from "./components/Button"
+import Channel from "./components/Channel"
+// Firebase
+import firebase from "firebase/app"
+import "firebase/database"
+import 'firebase/auth'
+import 'firebase/firestore'
 
-function App(props) {
-  let [messages, setMessages] = useState({})
-  let [listMessages, setListMessages] = useState(false)
-  let pseudo = props.match.params.pseudo
+const firebaseApp = firebase.initializeApp({
+  apiKey: "AIzaSyDiuv-n6qQ6wa7M9sibi6SuwAKREZ9SPm0",
+    authDomain: "sc-chatbox-app-2ef99.firebaseapp.com",
+    projectId: "sc-chatbox-app-2ef99",
+    storageBucket: "sc-chatbox-app-2ef99.appspot.com",
+    messagingSenderId: "403599717032",
+    appId: "1:403599717032:web:d69e3e3bf4a8d4d396889d",
+    measurementId: "G-TB3NQKKDSH"
+})
 
-  const addMessage = (message) => {
-    console.log("IN addMessage")
-    messages[`message-${Date.now()}`] = message
-    setMessages(messages)
-    console.log(messages)
-    console.log("OUT addMessage")
-    listMessages = Object.keys(messages).map((key) => <Message key={key} pseudo={messages[key].pseudo} message={messages[key].message}></Message>)
-    setListMessages(listMessages)
+const auth = firebaseApp.auth()
+const db = firebaseApp.firestore()
+
+const signInWithGoogle = async () => {
+  // retrieve Google provider object
+  const provider = new firebase.auth.GoogleAuthProvider();
+  // Set language to the default browser preference
+  auth.useDeviceLanguage()
+  // Start sign in process
+  try {
+    await auth.signInWithPopup(provider)
+  } catch (error) {
+    console.error(error)
   }
+}
 
-  console.log(listMessages)
+const signOut = async () => {
+  try {
+    await auth.signOut()
+  } catch (error) {
+    console.log(error.error)
+  }
+}
+
+
+
+function App() {
+  const [user, setUser] = useState(() => auth.currentUser)
+  const [initializing, setInitializing] = useState(true)
+
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user)
+      } else {
+        setUser(null)
+      }
+      if (initializing) {
+        setInitializing(false)
+      }
+    })
+
+    // Cleanup subscription
+    return unsubscribe
+  }, [])
+
+  if (initializing) return "Loading..."
 
   return (
-    <div className='box'>
-      <div className='messages'>
-        <div className='message'>{listMessages}</div>
+    <Fragment>
+      <div>
+        { user ? (
+          <> 
+            <p>Hello {user.displayName}</p>
+            <Button onClick={signOut}> Sign out</Button>
+            <Channel user={user} db={db}></Channel>
+          </>)  :  (<Button onClick={signInWithGoogle}> Sign in with Google</Button>)}
       </div>
-      <Formulaire addMessage={addMessage} pseudo={pseudo} />
-    </div>
+      
+    </Fragment>
   )
 }
 
