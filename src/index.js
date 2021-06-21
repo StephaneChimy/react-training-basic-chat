@@ -6,12 +6,13 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import Connexion from './components/Connexion';
 import NotFound from './components/NotFound';
+import LoginForm from './components/LoginForm';
 
 const Root = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path='/' component={Connexion} />
-      <Route path='/pseudo/:pseudo' component={App} />
+      <Route exact path='/' component={App} />
+      {/* <Route path='/pseudo/:pseudo' component={App} /> */}
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>
