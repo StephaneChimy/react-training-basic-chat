@@ -35,10 +35,13 @@ function App() {
   return (
     <div>
       {user ? (
-        <div class='h-screen bg-white-300'>
+        <div class='h-full w-full bg-white-300'>
           <div class='flex justify-center items-center h-screen '>
-            <div class='w-full/2 h-full/2 bg-white rounded shadow-2xl'>
+            <div class='w-1/2  bg-white rounded shadow-2xl'>
               <NavHeader user={user} />
+              <div className='h-24 flex justify-center items-center bg-gray-100 shadow-inner text-center'>
+                <h1>-SC- Chatbox-App</h1>
+              </div>
               <Channel user={user} db={db}></Channel>
             </div>
           </div>
