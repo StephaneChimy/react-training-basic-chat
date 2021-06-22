@@ -39,8 +39,8 @@ function App() {
           <div class='flex justify-center items-center h-screen '>
             <div class='w-1/2  bg-white rounded shadow-2xl'>
               <NavHeader user={user} />
-              <div className='h-24 flex justify-center items-center bg-greenBrand shadow-inner text-center'>
-                <h1 className='text-gray-50'>-SC- Chatbox-App</h1>
+              <div className='h-24 flex justify-center items-center bg-gray-50 shadow-inner text-center'>
+                <h1 className='text-black'>-SC- Chatbox-App</h1>
               </div>
               <Channel user={user} db={db}></Channel>
             </div>

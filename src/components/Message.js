@@ -10,7 +10,7 @@ const Message = ({ createdAt = null, text = "", displayName = "", photoURL = "",
           <div class='flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start text-right'>
             <div>
               {displayName ? <p class='text-sm text-gray-900 font-semibold dark:text-white ml-2'>{displayName}</p> : null}
-              <p class='px-4 py-2 rounded-lg inline-block rounded-br-none bg-greenBrand text-gray-50 w-48 shadow-xl'>{text}</p>
+              <p class='px-4 py-2 rounded-lg inline-block rounded-br-none bg-greenBrand text-white w-48 shadow-xl'>{text}</p>
               {createdAt?.seconds ? (
                 <p class='text-sm text-gray-400 dark:text-gray-300 ml-2'>{formatRelative(new Date(createdAt.seconds * 1000), new Date())}</p>
               ) : null}
