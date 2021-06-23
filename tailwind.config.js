@@ -9,6 +9,7 @@ module.exports = {
       current: "currentColor",
       black: colors.black,
       white: colors.white,
+      purple: colors.purple,
       gray: colors.trueGray,
       red: colors.red,
       blue: colors.sky,

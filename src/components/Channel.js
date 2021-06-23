@@ -36,7 +36,7 @@ const Channel = ({ user = null, db = null }) => {
   }
 
   // Is this the current user?
-  const isUser = uid => uid === user.uid
+  const isUser = (uid) => uid === user.uid
 
   useEffect(() => {
     if (db) {
@@ -50,12 +50,12 @@ const Channel = ({ user = null, db = null }) => {
             ...doc.data(),
             id: doc.id,
           }))
-          const viewOnlyTenMessages =() =>{
+          const viewOnlyTenMessages = () => {
             let allMessages = data
             let allMessagesTemp = []
             console.log(allMessages)
-            for(let i = allMessages.length -10; i < allMessages.length; i++ ){
-                allMessagesTemp.push(allMessages[i])
+            for (let i = allMessages.length - 10; i < allMessages.length; i++) {
+              allMessagesTemp.push(allMessages[i])
             }
             console.log(allMessagesTemp)
             data = allMessagesTemp
@@ -71,21 +71,17 @@ const Channel = ({ user = null, db = null }) => {
   }, [db])
 
   // useEffect for scrollBottom
-  useEffect(
-        scrollStaysBottom
-  , [messages])
+  useEffect(scrollStaysBottom, [messages])
 
   return (
     <section>
-      <div>
-        <div
-          id='messages'
-          class='flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch max-h-96 shadow'
-          ref={messagesRef}>
-          {messages.map((message) => (
-            <Message key={message.id} isUser={isUser} {...message}></Message>
-          ))}
-        </div>
+      <div
+        id='messages'
+        className='flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch max-h-96 shadow'
+        ref={messagesRef}>
+            {messages.map((message) => (
+                <Message isUser={isUser} {...message}></Message>
+            ))}
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -97,7 +93,7 @@ const Channel = ({ user = null, db = null }) => {
               type='text'
               placeholder='Type your message here'
               className='w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 p-5 bg-gray-200 rounded-full py-1 m-3 text-sm'></input>
-            <div class='absolute right-3 items-center inset-y-0 hidden -top-2.5 sm:flex'>
+            <div class='absolute right-3 items-center inset-y-0 hidden sm:flex '>
               <ButtonSendInChat type='submit' disabled={!newMessage} />
             </div>
           </div>
