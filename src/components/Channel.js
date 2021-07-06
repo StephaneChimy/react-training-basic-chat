@@ -13,7 +13,7 @@ const Channel = ({ user = null, db = null }) => {
     messagesRef.current.scrollTop = messagesRef.current.scrollHeight
   }
   //
-  const { uid, displayName, photoURL } = user
+  const { uid, displayName, photoURL, email } = user
   console.log(user)
 
   const handleChange = (e) => {
@@ -30,6 +30,7 @@ const Channel = ({ user = null, db = null }) => {
         uid,
         displayName,
         photoURL,
+        email,
       })
     }
     setNewMessage("")

@@ -1,7 +1,7 @@
 import React from "react"
 import { formatRelative } from "date-fns"
 
-const Message = ({ createdAt = null, text = "", displayName = "", photoURL = "", uid = "", isUser = null }) => {
+const Message = ({ createdAt = null, text = "", displayName = "", photoURL = "", email = null, uid = "", isUser = null }) => {
   console.log(isUser(uid))
   if (isUser(uid)) {
     return (
@@ -9,7 +9,7 @@ const Message = ({ createdAt = null, text = "", displayName = "", photoURL = "",
         <div class='flex items-start justify-end'>
           <div class='flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start text-right'>
             <div>
-              {displayName ? <p class='text-sm text-gray-900 font-semibold dark:text-white ml-2'>{displayName}</p> : null}
+              {displayName ? <p class='text-sm text-gray-900 font-semibold dark:text-white ml-2'>{displayName}</p> : email? <p class='text-sm text-gray-900 font-semibold dark:text-white ml-2'>{email}</p> : null}
               <p class='px-4 py-2 rounded-lg inline-block rounded-br-none bg-greenBrand text-white w-48 shadow-xl'>{text}</p>
               {createdAt?.seconds ? (
                 <p class='text-sm text-gray-400 dark:text-gray-300 ml-2'>{formatRelative(new Date(createdAt.seconds * 1000), new Date())}</p>
@@ -26,7 +26,7 @@ const Message = ({ createdAt = null, text = "", displayName = "", photoURL = "",
         <div class='flex items-center'>
           <div class='flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start'>
             <div>
-              {displayName ? <p class='text-sm text-gray-900 font-semibold dark:text-white ml-2'>{displayName}</p> : null}
+              {displayName ? <p class='text-sm text-gray-900 font-semibold dark:text-white ml-2'>{displayName}</p> : email? <p class='text-sm text-gray-900 font-semibold dark:text-white ml-2'>{email}</p> : null}
               <p class='px-4 py-2 rounded-lg inline-block rounded-bl-none bg-yellowBrand text-gray-600 w-48 shadow-xl'>{text}</p>
               {createdAt?.seconds ? (
                 <p class='text-sm text-gray-400 dark:text-gray-300 ml-2'>{formatRelative(new Date(createdAt.seconds * 1000), new Date())}</p>

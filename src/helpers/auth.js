@@ -22,4 +22,36 @@ const signOut = async () => {
   }
 }
 
-export { signInWithGoogle, signOut }
+const signUpWithEmailAndPassword = (email,password) => {
+  return firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Signed in 
+      let user = userCredential.user;
+      // ...
+    })
+    .catch((error) => {
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      console.error('codeError: ' + errorCode + ' message: ' + errorMessage)
+      // ..
+    });
+}
+
+const signInWithEmailAndPassword = (email,password) => {
+  return firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    let user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    let errorCode = error.code;
+    let errorMessage = error.message;
+    console.error('codeError: ' + errorCode + ' message: ' + errorMessage)
+
+  });
+}
+  
+
+
+export { signInWithGoogle, signOut, signUpWithEmailAndPassword, signInWithEmailAndPassword }
