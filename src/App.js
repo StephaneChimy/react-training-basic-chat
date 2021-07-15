@@ -1,4 +1,4 @@
-import { useState, Fragment, useEffect } from "react"
+import { useState, useEffect } from "react"
 import "./App.css"
 //import Formulaire from "./components/Formulaire"
 import Channel from "./components/Channel"
@@ -25,6 +25,7 @@ function App() {
 
     // Cleanup subscription
     return unsubscribe
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (initializing) return "Loading..."

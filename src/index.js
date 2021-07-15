@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
-import Connexion from './components/Connexion';
+// import Connexion from './components/Connexion';
 import NotFound from './components/NotFound';
-import LoginForm from './components/LoginForm';
+// import LoginForm from './components/LoginForm';
 
 const Root = () => (
   <BrowserRouter>

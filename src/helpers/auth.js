@@ -26,7 +26,7 @@ const signUpWithEmailAndPassword = (email,password) => {
   return firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Signed in 
-      let user = userCredential.user;
+      // let user = userCredential.user;
       // ...
     })
     .catch((error) => {
@@ -41,7 +41,7 @@ const signInWithEmailAndPassword = (email,password) => {
   return firebase.auth().signInWithEmailAndPassword(email, password)
   .then((userCredential) => {
     // Signed in
-    let user = userCredential.user;
+    // let user = userCredential.user;
     // ...
   })
   .catch((error) => {
