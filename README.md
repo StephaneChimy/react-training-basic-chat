@@ -106,7 +106,7 @@
 
 [![react-training-basic-chat][product-screenshot]](https://stephanechimy.github.io/react-training-basic-chat/)
 
-Développer une application web pour tester firebase et TailwindCSS. 
+Développer une application web pour tester Firebase et TailwindCSS. 
 
 #### CONTRAINTES
 
@@ -121,11 +121,9 @@ Utilisation de React, Firebase et TailwinCSS
 
 ### ⛏️ Built With <a name = "built-with"></a>
 
--Frontend
-
-* [React](https://fr.wikipedia.org/wiki/HTML5)
-* [Firebase](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade)
-* [TailwindCSS](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade)
+* [React](https://fr.reactjs.org/)
+* [Firebase](https://firebase.google.com)
+* [TailwindCSS](https://tailwindcss.com/)
 
 
 <!-- GETTING STARTED -->
@@ -154,7 +152,7 @@ Add additional notes about how to deploy this on a live system.
 <!-- USAGE EXAMPLES -->
 ## 🎈 Usage <a name = "usage"></a>
 
-[chatbox](https://stephanechimy.github.io/react-training-basic-chat/)
+[Lien vers la Chatbox](https://stephanechimy.github.io/react-training-basic-chat/)
 
 
 <!--
